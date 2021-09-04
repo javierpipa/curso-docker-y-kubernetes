@@ -2,14 +2,17 @@ version: '3.3'
 
 services:
   db:
-    image: postgres
+    # image: postgres
+    build:
+      dockerfile: Dockerfile
+      context: ./Projects/Postgres
     restart: always
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      # - POSTGRES_PASSWORD=postgres
     networks:
       - dock2
     healthcheck:
