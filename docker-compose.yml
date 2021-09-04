@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.3'
 
 services:
   db:
@@ -22,14 +22,16 @@ services:
       context: ./Projects/Django
     # image: javierpipa/django:latest
     restart: always
+    profiles: ["frontend"]
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
-      db:
-        condition: service_healthy
+      - db
+      # db:
+      #   condition: service_healthy
     networks:
       - dock2
 
