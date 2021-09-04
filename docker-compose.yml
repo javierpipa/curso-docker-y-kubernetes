@@ -9,10 +9,14 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    networks:
+      - dock1
   web:
-    build: 
+    build:
       dockerfile: Dockerfile
       context: ./Projects/Django
+    # image: javierpipa/django:latest
+    restart: always
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
@@ -20,3 +24,14 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - dock1
+
+      
+
+networks:
+  dock1:
+
+volumes:
+  data:
+    driver: local
