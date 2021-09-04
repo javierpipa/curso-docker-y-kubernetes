@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   db:
-    # image: postgres
+    # image: javierpipa/postgress:latest
     build:
       dockerfile: Dockerfile
       context: ./Projects/Postgres
