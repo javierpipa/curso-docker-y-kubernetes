@@ -10,7 +10,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     networks:
-      - dock1
+      - dock2
   web:
     build:
       dockerfile: Dockerfile
@@ -25,12 +25,10 @@ services:
     depends_on:
       - db
     networks:
-      - dock1
-
-      
+      - dock2
 
 networks:
-  dock1:
+  dock2:
 
 volumes:
   data:
